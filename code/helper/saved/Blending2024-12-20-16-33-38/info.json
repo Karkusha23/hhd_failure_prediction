@@ -1,0 +1,72 @@
+{
+    "timestamp": "2024-12-20-16-33-38",
+    "model": {
+        "model_name": {
+            "algorithm": "Blending",
+            "models": [
+                "RandomForestClassifier",
+                "MLPClassifier",
+                "CatBoostClassifier"
+            ],
+            "meta_model": "LogisticRegression"
+        },
+        "hyperparams": {
+            "cv": 5,
+            "n_jobs": -1
+        },
+        "optimizations": []
+    },
+    "preprocess_operations": [
+        {
+            "operation": "clear_unused_data"
+        },
+        {
+            "operation": "add_taget_column"
+        },
+        {
+            "operation": "prepare_train_df"
+        },
+        {
+            "operation": "add_time_features",
+            "params": {
+                "splitted": false
+            }
+        },
+        {
+            "operation": "train_test_val_split",
+            "params": {
+                "train_size": 0.8,
+                "val_size": 0.1,
+                "test_size": 0.1,
+                "sampling_strat": 0.001,
+                "oversampling": "Borderline",
+                "undersampling": null
+            }
+        },
+        {
+            "operation": "normalize_data",
+            "params": {
+                "method": "formulae",
+                "auto": true,
+                "inplace": false,
+                "splitted": true
+            }
+        },
+        {
+            "operation": "normalize_data",
+            "params": {
+                "method": "YJ",
+                "auto": true,
+                "inplace": true,
+                "splitted": true
+            }
+        }
+    ],
+    "metrics": {
+        "accuracy": 0.9997021923018076,
+        "precision": 0.9868421052631579,
+        "recall": 0.5836575875486382,
+        "f1": 0.7334963325183375,
+        "auc_roc": 0.7918260596737973
+    }
+}

@@ -1,0 +1,148 @@
+{
+    "timestamp": "2024-12-20-23-37-34",
+    "model": {
+        "model_name": {
+            "main_model": "DoubleLayer",
+            "submodels": [
+                {
+                    "layer1": "LightGBM"
+                },
+                {
+                    "layer2": "LightGBM"
+                }
+            ]
+        },
+        "hyperparams": {
+            "n_splits": 5,
+            "n_opts": 30,
+            "threshold": 0.0001,
+            "layer1": {
+                "objective": "binary:logistic",
+                "base_score": null,
+                "booster": null,
+                "callbacks": null,
+                "colsample_bylevel": null,
+                "colsample_bynode": null,
+                "colsample_bytree": 0.7294944463513897,
+                "device": null,
+                "early_stopping_rounds": null,
+                "enable_categorical": false,
+                "eval_metric": null,
+                "feature_types": null,
+                "gamma": 0.04428245782131812,
+                "grow_policy": null,
+                "importance_type": null,
+                "interaction_constraints": null,
+                "learning_rate": 0.19137392235706674,
+                "max_bin": null,
+                "max_cat_threshold": null,
+                "max_cat_to_onehot": null,
+                "max_delta_step": null,
+                "max_depth": 14,
+                "max_leaves": null,
+                "min_child_weight": null,
+                "missing": "NaN",
+                "monotone_constraints": null,
+                "multi_strategy": null,
+                "n_estimators": 254,
+                "n_jobs": -1,
+                "num_parallel_tree": null,
+                "random_state": null,
+                "reg_alpha": 0.008442287843455142,
+                "reg_lambda": 1.5177668122780342e-05,
+                "sampling_method": null,
+                "scale_pos_weight": null,
+                "subsample": 0.8071269550661432,
+                "tree_method": null,
+                "validate_parameters": null,
+                "verbosity": null
+            },
+            "layer2": {
+                "objective": "binary:logistic",
+                "base_score": null,
+                "booster": null,
+                "callbacks": null,
+                "colsample_bylevel": null,
+                "colsample_bynode": null,
+                "colsample_bytree": 0.7294944463513897,
+                "device": null,
+                "early_stopping_rounds": null,
+                "enable_categorical": false,
+                "eval_metric": null,
+                "feature_types": null,
+                "gamma": 0.04428245782131812,
+                "grow_policy": null,
+                "importance_type": null,
+                "interaction_constraints": null,
+                "learning_rate": 0.19137392235706674,
+                "max_bin": null,
+                "max_cat_threshold": null,
+                "max_cat_to_onehot": null,
+                "max_delta_step": null,
+                "max_depth": 14,
+                "max_leaves": null,
+                "min_child_weight": null,
+                "missing": "NaN",
+                "monotone_constraints": null,
+                "multi_strategy": null,
+                "n_estimators": 254,
+                "n_jobs": -1,
+                "num_parallel_tree": null,
+                "random_state": null,
+                "reg_alpha": 0.008442287843455142,
+                "reg_lambda": 1.5177668122780342e-05,
+                "sampling_method": null,
+                "scale_pos_weight": null,
+                "subsample": 0.8071269550661432,
+                "tree_method": null,
+                "validate_parameters": null,
+                "verbosity": null
+            }
+        },
+        "optimizations": []
+    },
+    "preprocess_operations": [
+        {
+            "operation": "clear_unused_data"
+        },
+        {
+            "operation": "add_taget_column"
+        },
+        {
+            "operation": "prepare_train_df"
+        },
+        {
+            "operation": "add_time_features",
+            "params": {
+                "splitted": false
+            }
+        },
+        {
+            "operation": "train_test_val_split",
+            "params": {
+                "train_size": 0.8,
+                "val_size": 0.1,
+                "test_size": 0.1,
+                "sampling_strat": 0.05,
+                "oversampling": null,
+                "undersampling": null
+            }
+        },
+        {
+            "operation": "normalize_data",
+            "params": {
+                "method": "YJ",
+                "auto": true,
+                "inplace": false,
+                "splitted": true
+            }
+        }
+    ],
+    "metrics": {
+        "accuracy": 0.9996885313982208,
+        "precision": 0.9281437125748503,
+        "recall": 0.603112840466926,
+        "f1": 0.7311320754716981,
+        "auc_roc": 0.8015400156303315
+    }
+}

@@ -1,0 +1,189 @@
+{
+    "timestamp": "2024-12-20-18-33-28",
+    "model": {
+        "model_name": {
+            "main_model": "WeightedXCL",
+            "submodels": [
+                "XGBoost",
+                "CatBoost",
+                "LightGBM"
+            ]
+        },
+        "hyperparams": {
+            "xgboost": {
+                "objective": "binary:logistic",
+                "base_score": null,
+                "booster": null,
+                "callbacks": null,
+                "colsample_bylevel": null,
+                "colsample_bynode": null,
+                "colsample_bytree": 0.7334834444556088,
+                "device": null,
+                "early_stopping_rounds": null,
+                "enable_categorical": false,
+                "eval_metric": null,
+                "feature_types": null,
+                "gamma": 0.7143340896097039,
+                "grow_policy": null,
+                "importance_type": null,
+                "interaction_constraints": null,
+                "learning_rate": 0.20526654188465587,
+                "max_bin": null,
+                "max_cat_threshold": null,
+                "max_cat_to_onehot": null,
+                "max_delta_step": null,
+                "max_depth": 7,
+                "max_leaves": null,
+                "min_child_weight": null,
+                "missing": "NaN",
+                "monotone_constraints": null,
+                "multi_strategy": null,
+                "n_estimators": 307,
+                "n_jobs": -1,
+                "num_parallel_tree": null,
+                "random_state": null,
+                "reg_alpha": 0.8609993861334124,
+                "reg_lambda": 0.9692763545078751,
+                "sampling_method": null,
+                "scale_pos_weight": null,
+                "subsample": 0.5003893829205072,
+                "tree_method": null,
+                "validate_parameters": null,
+                "verbosity": null,
+                "weigth": 0.3
+            },
+            "catboost": {
+                "nan_mode": "Min",
+                "eval_metric": "Logloss",
+                "iterations": 210,
+                "sampling_frequency": "PerTree",
+                "leaf_estimation_method": "Newton",
+                "random_score_type": "NormalWithModelSizeDecrease",
+                "grow_policy": "SymmetricTree",
+                "penalties_coefficient": 1,
+                "boosting_type": "Plain",
+                "model_shrink_mode": "Constant",
+                "feature_border_type": "GreedyLogSum",
+                "bayesian_matrix_reg": 0.10000000149011612,
+                "eval_fraction": 0,
+                "force_unit_auto_pair_weights": false,
+                "l2_leaf_reg": 1.0077877044677734,
+                "random_strength": 1.1084845066070557,
+                "rsm": 1,
+                "boost_from_average": false,
+                "model_size_reg": 0.5,
+                "pool_metainfo_options": {
+                    "tags": {}
+                },
+                "subsample": 0.800000011920929,
+                "use_best_model": false,
+                "class_names": [
+                    0,
+                    1
+                ],
+                "random_seed": 0,
+                "depth": 8,
+                "posterior_sampling": false,
+                "border_count": 189,
+                "classes_count": 0,
+                "auto_class_weights": "None",
+                "sparse_features_conflict_fraction": 0,
+                "leaf_estimation_backtracking": "AnyImprovement",
+                "best_model_min_trees": 1,
+                "model_shrink_rate": 0,
+                "min_data_in_leaf": 1,
+                "loss_function": "Logloss",
+                "learning_rate": 0.3076634705066681,
+                "score_function": "Cosine",
+                "task_type": "CPU",
+                "leaf_estimation_iterations": 10,
+                "bootstrap_type": "MVS",
+                "max_leaves": 256,
+                "weigth": 0.3
+            },
+            "lgbm": {
+                "boosting_type": "gbdt",
+                "class_weight": null,
+                "colsample_bytree": 0.9464704583099741,
+                "importance_type": "split",
+                "learning_rate": 0.13022300234864176,
+                "max_depth": 10,
+                "min_child_samples": 12,
+                "min_child_weight": 0.001,
+                "min_split_gain": 0.0,
+                "n_estimators": 199,
+                "n_jobs": -1,
+                "num_leaves": 72,
+                "objective": null,
+                "random_state": null,
+                "reg_alpha": 0.9849549260809971,
+                "reg_lambda": 0.9162213204002109,
+                "subsample": 0.6061695553391381,
+                "subsample_for_bin": 200000,
+                "subsample_freq": 0,
+                "verbose": -1,
+                "weigth": 0.4
+            }
+        },
+        "optimizations": [
+            {
+                "optimization": "simple",
+                "data": "train",
+                "params": {
+                    "method": "random",
+                    "epochs": 5,
+                    "cv": 4
+                }
+            },
+            {
+                "optimization": "optimize_weights",
+                "score": 0.7184466019417475,
+                "data": "val"
+            }
+        ]
+    },
+    "preprocess_operations": [
+        {
+            "operation": "clear_unused_data"
+        },
+        {
+            "operation": "add_taget_column"
+        },
+        {
+            "operation": "prepare_train_df"
+        },
+        {
+            "operation": "add_time_features",
+            "params": {
+                "splitted": false
+            }
+        },
+        {
+            "operation": "train_test_val_split",
+            "params": {
+                "train_size": 0.8,
+                "val_size": 0.1,
+                "test_size": 0.1,
+                "sampling_strat": 0.005,
+                "oversampling": "Borderline",
+                "undersampling": null
+            }
+        },
+        {
+            "operation": "normalize_data",
+            "params": {
+                "method": "YJ",
+                "auto": true,
+                "inplace": true,
+                "splitted": true
+            }
+        }
+    ],
+    "metrics": {
+        "accuracy": 0.9996830670367861,
+        "precision": 0.9490445859872612,
+        "recall": 0.5797665369649806,
+        "f1": 0.7198067632850242,
+        "auc_roc": 0.7898723320804026
+    }
+}

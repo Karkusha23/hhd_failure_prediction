@@ -1,0 +1,112 @@
+{
+    "timestamp": "2024-12-21-17-19-59",
+    "model": {
+        "model_name": {
+            "algorithm": "Blending",
+            "models": [
+                "MLPClassifier",
+                "RandomForestClassifier",
+                "CatBoostClassifier"
+            ],
+            "meta_model": "LogisticRegression"
+        },
+        "hyperparams": {
+            "cv": 5,
+            "n_jobs": -1
+        },
+        "optimizations": []
+    },
+    "preprocess_operations": [
+        {
+            "operation": "clear_unused_data"
+        },
+        {
+            "operation": "add_taget_column"
+        },
+        {
+            "operation": "prepare_train_df"
+        },
+        {
+            "operation": "add_time_features",
+            "params": {
+                "splitted": false
+            }
+        },
+        {
+            "operation": "train_test_val_split",
+            "params": {
+                "train_size": 0.8,
+                "val_size": 0.1,
+                "test_size": 0.1,
+                "sampling_strat": 0.055,
+                "oversampling": "Default",
+                "undersampling": null
+            }
+        },
+        {
+            "operation": "normalize_data",
+            "params": {
+                "method": "formulae",
+                "auto": true,
+                "inplace": false,
+                "splitted": true
+            }
+        },
+        {
+            "operation": "normalize_data",
+            "params": {
+                "method": "YJ",
+                "auto": true,
+                "inplace": true,
+                "splitted": true
+            }
+        },
+        {
+            "operation": "drop_unimportant_features",
+            "columns": [
+                "failure",
+                "smart_197_raw",
+                "shift_smart_197_raw_1",
+                "shift_smart_199_raw_1",
+                "diff_smart_187_raw_1",
+                "diff_smart_188_raw_1",
+                "diff_smart_192_raw_1",
+                "diff_smart_197_raw_1",
+                "diff_smart_199_raw_1",
+                "diff_smart_9_raw_1",
+                "diff_smart_240_raw_1",
+                "diff_smart_242_raw_1",
+                "diff_smart_241_raw_1",
+                "smart_9_raw",
+                "shift_smart_192_raw_1",
+                "shift_smart_240_raw_1",
+                "shift_smart_9_raw_1",
+                "diff_smart_5_raw_1",
+                "shift_smart_5_raw_1",
+                "shift_smart_241_raw_1",
+                "shift_smart_187_raw_1",
+                "smart_5_raw",
+                "smart_187_raw",
+                "shift_smart_242_raw_1",
+                "shift_smart_188_raw_1",
+                "smart_199_raw",
+                "smart_188_raw",
+                "smart_192_raw",
+                "smart_240_raw",
+                "smart_241_raw",
+                "smart_242_raw"
+            ],
+            "drop": 13
+        },
+        {
+            "operation": "rescale_types"
+        }
+    ],
+    "metrics": {
+        "accuracy": 0.9992978295556382,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "auc_roc": 0.5
+    }
+}

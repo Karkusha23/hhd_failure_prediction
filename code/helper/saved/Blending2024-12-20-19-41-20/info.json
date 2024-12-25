@@ -1,0 +1,99 @@
+{
+    "timestamp": "2024-12-20-19-41-20",
+    "model": {
+        "model_name": {
+            "algorithm": "Blending",
+            "models": [
+                "RandomForestClassifier",
+                "MLPClassifier",
+                "CatBoostClassifier"
+            ],
+            "meta_model": "LogisticRegression"
+        },
+        "hyperparams": {
+            "cv": 5,
+            "n_jobs": -1
+        },
+        "optimizations": []
+    },
+    "preprocess_operations": [
+        {
+            "operation": "clear_unused_data"
+        },
+        {
+            "operation": "add_taget_column"
+        },
+        {
+            "operation": "prepare_train_df"
+        },
+        {
+            "operation": "add_time_features",
+            "params": {
+                "splitted": false
+            }
+        },
+        {
+            "operation": "train_test_val_split",
+            "params": {
+                "train_size": 0.8,
+                "val_size": 0.1,
+                "test_size": 0.1,
+                "sampling_strat": 0.05,
+                "oversampling": "Borderline",
+                "undersampling": null
+            }
+        },
+        {
+            "operation": "normalize_data",
+            "params": {
+                "method": "formulae",
+                "auto": true,
+                "inplace": true,
+                "splitted": true
+            }
+        },
+        {
+            "operation": "drop_unimportant_features",
+            "columns": [
+                "failure",
+                "smart_197_raw",
+                "shift_smart_197_raw_1",
+                "shift_smart_199_raw_1",
+                "diff_smart_187_raw_1",
+                "diff_smart_188_raw_1",
+                "diff_smart_192_raw_1",
+                "diff_smart_197_raw_1",
+                "diff_smart_199_raw_1",
+                "diff_smart_9_raw_1",
+                "diff_smart_240_raw_1",
+                "diff_smart_242_raw_1",
+                "diff_smart_241_raw_1",
+                "smart_9_raw",
+                "shift_smart_192_raw_1",
+                "shift_smart_240_raw_1",
+                "shift_smart_9_raw_1",
+                "diff_smart_5_raw_1",
+                "shift_smart_5_raw_1",
+                "shift_smart_241_raw_1",
+                "shift_smart_187_raw_1",
+                "smart_5_raw",
+                "smart_187_raw",
+                "shift_smart_242_raw_1",
+                "shift_smart_188_raw_1",
+                "smart_199_raw",
+                "smart_188_raw",
+                "smart_192_raw",
+                "smart_240_raw",
+                "smart_241_raw",
+                "smart_242_raw"
+            ]
+        }
+    ],
+    "metrics": {
+        "accuracy": 0.9996202268802867,
+        "precision": 0.9758064516129032,
+        "recall": 0.4708171206225681,
+        "f1": 0.6351706036745407,
+        "auc_roc": 0.7354044591605011
+    }
+}

@@ -1,0 +1,94 @@
+{
+    "timestamp": "2024-12-21-21-13-10",
+    "model": {
+        "model_name": "XGBoost",
+        "hyperparams": {
+            "objective": "binary:logistic",
+            "base_score": null,
+            "booster": null,
+            "callbacks": null,
+            "colsample_bylevel": null,
+            "colsample_bynode": null,
+            "colsample_bytree": 0.9570412521161018,
+            "device": null,
+            "early_stopping_rounds": null,
+            "enable_categorical": false,
+            "eval_metric": null,
+            "feature_types": null,
+            "gamma": 0.8967729295125213,
+            "grow_policy": null,
+            "importance_type": null,
+            "interaction_constraints": null,
+            "learning_rate": 0.28430279369808287,
+            "max_bin": null,
+            "max_cat_threshold": null,
+            "max_cat_to_onehot": null,
+            "max_delta_step": null,
+            "max_depth": 15,
+            "max_leaves": null,
+            "min_child_weight": null,
+            "missing": "NaN",
+            "monotone_constraints": null,
+            "multi_strategy": null,
+            "n_estimators": 122,
+            "n_jobs": -1,
+            "num_parallel_tree": null,
+            "random_state": null,
+            "reg_alpha": 0.010518888425817776,
+            "reg_lambda": 0.13213980994535074,
+            "sampling_method": null,
+            "scale_pos_weight": null,
+            "subsample": 0.82443451454931,
+            "tree_method": null,
+            "validate_parameters": null,
+            "verbosity": null
+        },
+        "optimizations": [
+            "TPE"
+        ]
+    },
+    "preprocess_operations": [
+        {
+            "operation": "clear_unused_data"
+        },
+        {
+            "operation": "add_taget_column"
+        },
+        {
+            "operation": "prepare_train_df"
+        },
+        {
+            "operation": "add_time_features",
+            "params": {
+                "splitted": false
+            }
+        },
+        {
+            "operation": "train_test_val_split",
+            "params": {
+                "train_size": 0.8,
+                "val_size": 0.1,
+                "test_size": 0.1,
+                "sampling_strat": -1,
+                "oversampling": null,
+                "undersampling": null
+            }
+        },
+        {
+            "operation": "normalize_data",
+            "params": {
+                "method": "formulae",
+                "auto": true,
+                "inplace": false,
+                "splitted": true
+            }
+        }
+    ],
+    "metrics": {
+        "accuracy": 0.9997404428318507,
+        "precision": 0.9354838709677419,
+        "recall": 0.6770428015564203,
+        "f1": 0.7855530474040632,
+        "auc_roc": 0.8385049961750786
+    }
+}

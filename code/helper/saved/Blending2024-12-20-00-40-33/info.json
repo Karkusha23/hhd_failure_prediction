@@ -1,0 +1,63 @@
+{
+    "timestamp": "2024-12-20-00-40-33",
+    "model": {
+        "model_name": {
+            "algorithm": "Blending",
+            "models": [
+                "RandomForestClassifier",
+                "MLPClassifier",
+                "CatBoostClassifier"
+            ],
+            "meta_model": "LogisticRegression"
+        },
+        "hyperparams": {
+            "cv": 5,
+            "n_jobs": -1
+        },
+        "optimizations": []
+    },
+    "preprocess_operations": [
+        {
+            "operation": "clear_unused_data"
+        },
+        {
+            "operation": "add_taget_column"
+        },
+        {
+            "operation": "prepare_train_df"
+        },
+        {
+            "operation": "train_test_val_split",
+            "params": {
+                "train_size": 0.8,
+                "val_size": 0.1,
+                "test_size": 0.1,
+                "sampling_strat": 0.01,
+                "oversampling": "Borderline",
+                "undersampling": null
+            }
+        },
+        {
+            "operation": "add_time_features",
+            "params": {
+                "splitted": true
+            }
+        },
+        {
+            "operation": "normalize_data",
+            "params": {
+                "method": "formulae",
+                "auto": true,
+                "inplace": true,
+                "splitted": true
+            }
+        }
+    ],
+    "metrics": {
+        "accuracy": 0.9996885313982208,
+        "precision": 0.9863945578231292,
+        "recall": 0.5642023346303502,
+        "f1": 0.7178217821782178,
+        "auc_roc": 0.7820984332146531
+    }
+}
